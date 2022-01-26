@@ -1,10 +1,20 @@
-﻿@model IEnumerable<Storage.Models.Product>
+﻿@model IEnumerable<Storage.Models.ViewModels.ProductIndexViewModel>
 
 @{
     ViewData["Title"] = "Storage";
 }
 
 <h1>Storage</h1>
+
+<form asp-action="Search">
+    <div class="input-group mb-3">
+        <input type="text" name="category" class="form-control" placeholder="Sök efter önskad kategori" />
+        <div class="input-group-append">
+            <button type="submit" class="btn btn-outline-secondary">Sök</button>
+        </div>
+    </div>
+
+</form>
 
 <p>
     <a asp-action="Create">Lägga till en ny produkt</a>
@@ -18,6 +28,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Price)
             </th>
+            @*
             <th>
                 @Html.DisplayNameFor(model => model.OrderDate)
             </th>
@@ -26,13 +37,16 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Shelf)
-            </th>
+            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.Count)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Description)
+                @Html.DisplayNameFor(model => model.InventoryValue)
             </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>*@
             <th></th>
         </tr>
     </thead>
@@ -45,7 +59,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.OrderDate)
             </td>
             <td>
@@ -53,13 +67,16 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Shelf)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Count)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Description)
+                @Html.DisplayFor(modelItem => item.InventoryValue)
             </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>*@
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Ändra</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Information</a> |
